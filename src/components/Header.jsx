@@ -35,12 +35,14 @@ const Header = () => {
                 <Avatar>
                   <AvatarImage src={user?.user_metadata?.profile_pic} className="object-fit"/>
                   <AvatarFallback>AA</AvatarFallback>
+                  
+
+    
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuLabel>
-                  {console.log(user?.user_metadata?.name)
-                  }
+                  
                 {user?.user_metadata?.full_name || user?.user_metadata?.name || "User"}
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />

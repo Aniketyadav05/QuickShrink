@@ -32,7 +32,7 @@ const LandingPage = () => {
           <Button className="h-full" type="submit" variant="destructive"  >Shorten</Button>
         </form>
       <img src="./banner.png" alt="banner" className='w-full my-11 md:px-11' />
-      <Accordion type="multiple" collapsible={true} className="w-full md:px-11" >
+      <Accordion type="multiple" collapsible="true" className="w-full md:px-11" >
     <AccordionItem value="item-1">
       <AccordionTrigger>How does this work</AccordionTrigger>
       <AccordionContent>

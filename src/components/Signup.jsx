@@ -48,7 +48,7 @@ const Signup = () => {
         setErrors([])
         try {
             const schema = Yup.object().shape({
-                naem: Yup.string().required("name is required"),
+                name: Yup.string().required("name is required"),
                 email: Yup.string()
                     .email("Invalid  Email")
                     .required("Email is required"),
@@ -86,7 +86,7 @@ const Signup = () => {
             </CardHeader>
             <CardContent className="space-y-2">
                 <div className='space-y-1'>
-                    <Input name="naem" type="name" placeholder="ENTER YOUR NAME" onChange={handleInputChange} />
+                    <Input name="name" type="name" placeholder="ENTER YOUR NAME" onChange={handleInputChange} />
                     {errors.name && <Error message={errors.name} />}
                 </div>
             </CardContent>
