@@ -40,7 +40,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (error === null && data) {
-            navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`)
+            navigate(`/dashboard?${longLink ? `createNew=${longLink}` : ""}`);
             fetchUser()
         }
     }, [error,loading])
@@ -59,13 +59,19 @@ const Signup = () => {
             })
             await schema.validate(formData, { abortEarly: false })
             await fnSignup()
-        } catch (e) {
+        } catch (error) {
             const newErrors = {}
 
-            e?.inner?.forEach((err) => {
-                newErrors[err.path] = err.message
-            })
-            setErrors(newErrors)
+            if (error?.inner) {
+                error.inner.forEach((err) => {
+                  newErrors[err.path] = err.message;
+                });
+        
+                setErrors(newErrors);
+              } else {
+                setErrors({api: error.message});
+              
+            }
         }
 
     }

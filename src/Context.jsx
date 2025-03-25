@@ -8,7 +8,7 @@ const UrlContext = createContext()
 const UrlProvider= ({children}) => {
     const {data:user,loading, check: fetchUser}=UseFetch(getCurrentUser)
 
-    const isAuthenticated = user?.role === "authenticted"
+    const isAuthenticated = user?.role === "authenticated"
 
     useEffect(() =>{
         fetchUser()
