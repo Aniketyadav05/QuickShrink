@@ -9,6 +9,15 @@ const Auth = () => {
       <h1 className='text-5xl font-extrabold'>
         {searchParams.get("createnew")? "Hold up let's login first": "Login/SIgnUp"}
       </h1>
+      <Tabs defaultValue="login" className="w-[400px]">
+  <TabsList className="w-full grid grid-cols-2">
+    <TabsTrigger value="login">login</TabsTrigger>
+    <TabsTrigger value="signup">signup</TabsTrigger>
+  </TabsList>
+  <TabsContent value="login">Make changes to your account here.</TabsContent>
+  <TabsContent value="signup">Change your password here.</TabsContent>
+</Tabs>
+
     </div>
   )
 }
