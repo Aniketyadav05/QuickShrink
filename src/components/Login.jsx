@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Card,
     CardContent,
@@ -12,12 +12,19 @@ import { Button } from './ui/button'
 import { PuffLoader } from 'react-spinners'
 import Error from './Error'
 import * as Yup from 'yup'
+import UseFetch from '@/hooks/UseFetch'
+import { login } from '@/db/apiAuth'
+import { useNavigate, useSearchParams } from 'react-router-dom'
+import { UrlState } from '@/Context'
 const Login = () => {
     const [errors, setErrors] = useState([])
     const [formData,setFormData] = useState({
         email: "",
         password: ""
     })
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams()
+    const longLink =useSearchParams('createNew')
 
     const handleInputChange = (e) => {
         const {name, value} = e.target
@@ -26,7 +33,15 @@ const Login = () => {
             [name] : value,
         }))
     }
+   const{data,loading,error , check:fnLogin} =  UseFetch(login,formData)
+   const {fetchUser} = UrlState()
 
+   useEffect(() => {
+    if(error===null && data){
+      navigate(`/dashboard?${longLink?`createNew=${longLink}`:""}`)
+      fetchUser()
+    }
+ }, [data,error])
     const handleLogin = async() => {
         setErrors([])
             try {
@@ -39,6 +54,7 @@ const Login = () => {
                     .required("Password is required")
                 })
                 await schema.validate(formData,{abortEarly: false})
+                await fnLogin()
             } catch (e) {
                 const newErrors = {}
 
@@ -54,6 +70,8 @@ const Login = () => {
   <CardHeader>
     <CardTitle>Login</CardTitle>
     <CardDescription>to your account if you already have one</CardDescription>
+    {error && <Error message={error.message} />}
+    
   </CardHeader>
   <CardContent className="space-y-2">
     <div className='space-y-1'>
@@ -68,7 +86,7 @@ const Login = () => {
     </div>
   </CardFooter>
   <Button onClick={handleLogin}>
-    {true ? <PuffLoader size={10} color='#36d7b7'/>:"Login"}
+    {loading ? <PuffLoader size={10} color='#36d7b7'/>:"Login"}
   </Button>
 </Card>
 
