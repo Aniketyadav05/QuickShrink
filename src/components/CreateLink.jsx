@@ -30,7 +30,7 @@ const CreateLink = () => {
                 <DialogContent className="sm:max-w-md">
 
                     <DialogHeader>
-                        <DialogTitle>Create New</DialogTitle>
+                        <DialogTitle className="font-bold text-2xl">Create New</DialogTitle>
                     </DialogHeader>
                     <Input id="titlle" placeholder="Enter the title" />
                     <Error message={"some error"} />
@@ -44,7 +44,7 @@ const CreateLink = () => {
                     </div>
                     <Error message={"some error"} />
                     <DialogFooter>
-                        <Button type="submit">Save</Button>
+                        <Button variant="destructive" type="submit">Create</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
