@@ -17,7 +17,7 @@ import UseFetch from '@/hooks/UseFetch'
 import { getClicksForUrls } from '@/db/apiClicks'
 import { getUrls } from '@/db/apiUrls'
 import LinkCard from '@/components/LinkCard'
-import CreateLink from '@/components/CreateLink'
+import {CreateLink} from '@/components/CreateLink'
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("")
 

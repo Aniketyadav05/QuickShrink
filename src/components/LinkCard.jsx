@@ -11,9 +11,11 @@ const LinkCard = ({url, fetchUrls}) => {
 const {laoding:loadingDelete,check:fnDelete}=UseFetch(deleteUrl,url?.id)
   return (
     <div className='flex flex-col md:flex-row gap-6 border p-4 bg-gray-900 rounded-lg'>
-        <img src={url?.qr_code}
+        <img src={url?.qr || url?.qr_code}
+
         className='h-32 object-contain ring ring-blue-600 self-start'
         alt="QRCODE" />
+        
         <Link to={`/link/${url?.id}`} className='flex flex-col flex-1'>
         <span className='text-3xl font-extrabold hover:underline cursor-pointer'>
           {url?.title}
