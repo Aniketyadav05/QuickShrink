@@ -60,3 +60,14 @@ export async function createUrl({title, longUrl, customUrl, user_id}, qrcode) {
   }
   
 
+export async function getLongUrl(id) {
+    const {data,error} = (await supabase.from("urls").select("id,orignal_url"))
+    .error(`short_url.eq.${id}, custom_url.eq.${id}`).single();
+
+    if(error){
+        console.error(error.message)
+        throw new Error("error fetching short link")
+    }
+
+    return data
+}

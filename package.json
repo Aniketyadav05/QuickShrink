@@ -30,6 +30,7 @@
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.15",
     "tw-animate-css": "^1.2.4",
+    "ua-parser-js": "^2.0.3",
     "yup": "^1.6.1"
   },
   "devDependencies": {
